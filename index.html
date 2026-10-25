@@ -8,50 +8,92 @@
     :root {
       --bg: #0c0d10;
       --card-bg: #15171e;
+      --card-hover: #1b1e27;
       --border: #262a35;
       --accent: #d4a373;
       --accent-hover: #c28e5d;
-      --accent-glow: rgba(212, 163, 115, 0.15);
+      --accent-glow: rgba(212, 163, 115, 0.16);
       --text: #f0f2f5;
       --text-muted: #9aa2b1;
       --badge-bg: #d4a373;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 80px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
     header { border-bottom: 1px solid var(--border); padding: 1.25rem 1rem; text-align: center; background: rgba(12,13,16,0.92); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); }
     .brand { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; }
-    .hero { max-width: 720px; margin: 2.5rem auto 1.5rem; text-align: center; padding: 0 1.25rem; }
-    .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; font-weight: 600; }
-    .hero h1 { font-size: 2.1rem; margin-bottom: 0.75rem; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
-    .hero p { color: var(--text-muted); font-size: 0.95rem; max-width: 540px; margin: 0 auto; }
-    .container { max-width: 1040px; margin: 0 auto; padding: 1rem 1.25rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
+    
+    .hero { max-width: 720px; margin: 2.75rem auto 1.5rem; text-align: center; padding: 0 1.25rem; }
+    .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; font-weight: 600; }
+    .hero h1 { font-size: 2.25rem; margin-bottom: 0.75rem; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
+    .hero p { color: var(--text-muted); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
+
+    .container { max-width: 1060px; margin: 0 auto; padding: 1.25rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.75rem; }
+    
     .tier-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease; position: relative; }
-    .tier-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 30px var(--accent-glow); }
-    .tier-card.featured { border-color: var(--accent); box-shadow: 0 8px 24px rgba(212, 163, 115, 0.12); }
-    .card-img-wrap { width: 100%; height: 210px; overflow: hidden; background: #08090b; position: relative; }
+    .tier-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 32px var(--accent-glow); }
+    .tier-card.featured { border-color: var(--accent); box-shadow: 0 8px 24px rgba(212, 163, 115, 0.14); }
+    
+    .card-img-wrap { width: 100%; height: 215px; overflow: hidden; background: #08090b; position: relative; }
     .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
-    .tier-card:hover .card-img-wrap img { transform: scale(1.05); }
+    .tier-card:hover .card-img-wrap img { transform: scale(1.04); }
+    
     .badge { position: absolute; top: 12px; right: 12px; background: var(--badge-bg); color: #0c0d10; font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; z-index: 2; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+    
     .card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
     .tier-header { margin-bottom: 1rem; }
-    .tier-title { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
-    .tier-price-row { display: flex; align-items: baseline; gap: 6px; margin: 0.5rem 0; }
-    .tier-price { font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
+    .tier-title { font-size: 1.22rem; font-weight: 600; color: #fff; margin-bottom: 0.35rem; }
+    
+    .tier-price-row { display: flex; align-items: baseline; gap: 6px; margin: 0.4rem 0 0.6rem; }
+    .tier-price { font-size: 2.1rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
     .tier-cadence { font-size: 0.8rem; color: var(--text-muted); }
-    .tier-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem; min-height: 38px; }
-    .tier-features { list-style: none; margin-bottom: 1.5rem; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; }
-    .tier-features li { margin-bottom: 0.55rem; display: flex; align-items: flex-start; gap: 9px; color: #d0d4dc; }
+    
+    .tier-desc { font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem; min-height: 42px; }
+    
+    .tier-features { list-style: none; margin-bottom: 1.5rem; font-size: 0.86rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.1rem; }
+    .tier-features li { margin-bottom: 0.6rem; display: flex; align-items: flex-start; gap: 9px; color: #d0d4dc; line-height: 1.4; }
     .tier-features li svg { flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px; stroke: var(--accent); }
-    .btn { display: block; width: 100%; padding: 0.85rem 1rem; border-radius: 9px; background: var(--accent); color: #0c0d10; font-weight: 700; text-align: center; border: none; cursor: pointer; transition: all 0.2s ease; font-size: 0.9rem; letter-spacing: 0.02em; }
+    
+    .btn { display: block; width: 100%; padding: 0.85rem 1rem; border-radius: 9px; background: var(--accent); color: #0c0d10; font-weight: 700; text-align: center; border: none; cursor: pointer; transition: all 0.2s ease; font-size: 0.92rem; letter-spacing: 0.02em; }
     .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .cart-summary { max-width: 540px; margin: 2rem auto; background: var(--card-bg); border: 1px solid var(--accent); border-radius: 14px; padding: 1.5rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .cart-summary .selected-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
-    .cart-summary .selected-name { font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0.25rem 0; }
-    .cart-price { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin: 0.25rem 0 1.25rem; }
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.65rem; }
+    
+    /* Sticky Mobile / Desktop Checkout Drawer */
+    .cart-summary {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 540px;
+      background: rgba(21, 23, 30, 0.96);
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translate(-50%, 20px); opacity: 0; }
+      to { transform: translate(-50%, 0); opacity: 1; }
+    }
+    .cart-meta { text-align: left; }
+    .cart-summary .selected-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
+    .cart-summary .selected-name { font-size: 1.05rem; font-weight: 700; color: #fff; }
+    .cart-price { font-size: 1.35rem; font-weight: 700; color: var(--accent); }
+    .btn-checkout { width: auto; min-width: 170px; padding: 0.75rem 1.25rem; font-size: 0.88rem; }
+    
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.7rem; }
       .container { padding: 0.75rem 1rem; }
       .card-img-wrap { height: 180px; }
+      .cart-summary { flex-direction: column; align-items: stretch; text-align: center; gap: 10px; bottom: 12px; }
+      .cart-meta { text-align: center; }
+      .btn-checkout { width: 100%; }
     }
   </style>
 </head>
@@ -67,6 +109,7 @@
   </section>
 
   <main class="container">
+    <!-- Tier 1: $190 -->
     <div class="tier-card">
       <div class="card-img-wrap">
         <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" alt="Starter Brew Set Siphon">
@@ -98,10 +141,11 @@
       </div>
     </div>
 
+    <!-- Tier 2: $240 (Featured) -->
     <div class="tier-card featured">
       <div class="badge">Most Popular</div>
       <div class="card-img-wrap">
-        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Connoisseur Collection Siphon">
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80" alt="Connoisseur Collection Siphon Tabletop">
       </div>
       <div class="card-body">
         <div class="tier-header">
@@ -130,9 +174,10 @@
       </div>
     </div>
 
+    <!-- Tier 3: $415 -->
     <div class="tier-card">
       <div class="card-img-wrap">
-        <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80" alt="Master Roaster Suite Siphon">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Master Roaster Suite Siphon Equipment">
       </div>
       <div class="card-body">
         <div class="tier-header">
@@ -163,18 +208,19 @@
   </main>
 
   <div class="cart-summary" id="cart" style="display:none;">
-    <div class="selected-label">Order Staging</div>
-    <div class="selected-name" id="cart-item"></div>
+    <div class="cart-meta">
+      <div class="selected-label">Staged For Checkout</div>
+      <div class="selected-name" id="cart-item"></div>
+    </div>
     <div class="cart-price" id="cart-total"></div>
-    <button class="btn" onclick="alert('Demo: Redirecting to 1-Click Mobile Checkout...')">Proceed to 1-Click Checkout</button>
+    <button class="btn btn-checkout" onclick="alert('Demo: Redirecting directly to 1-Click Shopify Mobile Checkout...')">1-Click Checkout →</button>
   </div>
 
   <script>
     function selectTier(name, price) {
-      document.getElementById('cart').style.display = 'block';
+      document.getElementById('cart').style.display = 'flex';
       document.getElementById('cart-item').textContent = name;
       document.getElementById('cart-total').textContent = '$' + price + '.00 USD';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
   </script>
 </body>
