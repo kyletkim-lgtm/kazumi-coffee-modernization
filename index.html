@@ -6,92 +6,169 @@
   <title>Kazumi Coffee | Artisan Siphon & Craft Bundles</title>
   <style>
     :root {
-      --bg: #0f1115;
-      --card-bg: #181b22;
-      --border: #2d3340;
+      --bg: #0c0d10;
+      --card-bg: #15171e;
+      --border: #262a35;
       --accent: #d4a373;
-      --accent-hover: #b88656;
+      --accent-hover: #c28e5d;
+      --accent-glow: rgba(212, 163, 115, 0.15);
       --text: #f0f2f5;
       --text-muted: #9aa2b1;
+      --badge-bg: #d4a373;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 60px; line-height: 1.5; }
-    header { border-bottom: 1px solid var(--border); padding: 1.25rem 1rem; text-align: center; background: rgba(15,17,21,0.95); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); }
-    .brand { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; }
-    .hero { max-width: 680px; margin: 2rem auto 1rem; text-align: center; padding: 0 1rem; }
-    .hero h1 { font-size: 1.85rem; margin-bottom: 0.5rem; font-weight: 600; color: #fff; }
-    .hero p { color: var(--text-muted); font-size: 0.95rem; }
-    .container { max-width: 900px; margin: 0 auto; padding: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
-    .tier-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s; position: relative; }
-    .tier-card:hover, .tier-card.featured { border-color: var(--accent); }
-    .badge { position: absolute; top: -10px; right: 15px; background: var(--accent); color: #000; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; }
-    .tier-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.35rem; }
-    .tier-price { font-size: 1.85rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem; }
-    .tier-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; flex-grow: 1; }
-    .tier-features { list-style: none; margin-bottom: 1.5rem; font-size: 0.85rem; }
-    .tier-features li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
-    .tier-features li::before { content: "✓"; color: var(--accent); font-weight: bold; }
-    .btn { display: block; width: 100%; padding: 0.75rem 1rem; border-radius: 8px; background: var(--accent); color: #000; font-weight: 600; text-align: center; border: none; cursor: pointer; transition: background 0.2s; font-size: 0.9rem; }
-    .btn:hover { background: var(--accent-hover); }
-    .cart-summary { max-width: 500px; margin: 2rem auto; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-align: center; }
-    .cart-price { font-size: 1.4rem; font-weight: 700; color: #fff; margin: 0.5rem 0 1rem; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 80px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    header { border-bottom: 1px solid var(--border); padding: 1.25rem 1rem; text-align: center; background: rgba(12,13,16,0.92); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); }
+    .brand { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; }
+    .hero { max-width: 720px; margin: 2.5rem auto 1.5rem; text-align: center; padding: 0 1.25rem; }
+    .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; font-weight: 600; }
+    .hero h1 { font-size: 2.1rem; margin-bottom: 0.75rem; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
+    .hero p { color: var(--text-muted); font-size: 0.95rem; max-width: 540px; margin: 0 auto; }
+    .container { max-width: 1040px; margin: 0 auto; padding: 1rem 1.25rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
+    .tier-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease; position: relative; }
+    .tier-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 30px var(--accent-glow); }
+    .tier-card.featured { border-color: var(--accent); box-shadow: 0 8px 24px rgba(212, 163, 115, 0.12); }
+    .card-img-wrap { width: 100%; height: 210px; overflow: hidden; background: #08090b; position: relative; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+    .tier-card:hover .card-img-wrap img { transform: scale(1.05); }
+    .badge { position: absolute; top: 12px; right: 12px; background: var(--badge-bg); color: #0c0d10; font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; z-index: 2; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+    .card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .tier-header { margin-bottom: 1rem; }
+    .tier-title { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+    .tier-price-row { display: flex; align-items: baseline; gap: 6px; margin: 0.5rem 0; }
+    .tier-price { font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
+    .tier-cadence { font-size: 0.8rem; color: var(--text-muted); }
+    .tier-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem; min-height: 38px; }
+    .tier-features { list-style: none; margin-bottom: 1.5rem; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; }
+    .tier-features li { margin-bottom: 0.55rem; display: flex; align-items: flex-start; gap: 9px; color: #d0d4dc; }
+    .tier-features li svg { flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px; stroke: var(--accent); }
+    .btn { display: block; width: 100%; padding: 0.85rem 1rem; border-radius: 9px; background: var(--accent); color: #0c0d10; font-weight: 700; text-align: center; border: none; cursor: pointer; transition: all 0.2s ease; font-size: 0.9rem; letter-spacing: 0.02em; }
+    .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .cart-summary { max-width: 540px; margin: 2rem auto; background: var(--card-bg); border: 1px solid var(--accent); border-radius: 14px; padding: 1.5rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .cart-summary .selected-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
+    .cart-summary .selected-name { font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0.25rem 0; }
+    .cart-price { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin: 0.25rem 0 1.25rem; }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.65rem; }
+      .container { padding: 0.75rem 1rem; }
+      .card-img-wrap { height: 180px; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="brand">KAZUMI COFFEE</div>
   </header>
+
   <section class="hero">
-    <h1>Artisan Siphon Mastery</h1>
-    <p>Mobile-optimized bundle curation engineered for effortless checkout.</p>
+    <div class="hero-eyebrow">Artisan Japanese Brewing</div>
+    <h1>Tabletop Siphon Craft Bundles</h1>
+    <p>Complete single-click curated kits designed for clean extraction and rich aromatics.</p>
   </section>
+
   <main class="container">
     <div class="tier-card">
-      <div>
-        <div class="tier-title">Starter Brew Set</div>
-        <div class="tier-price">$190</div>
-        <div class="tier-desc">Core siphon brewing system engineered for everyday specialty extraction.</div>
-        <ul class="tier-features">
-          <li>Signature 3-Cup Tabletop Siphon</li>
-          <li>Alcohol Burner & Precision Wick</li>
-          <li>Single-Origin Whole Bean Cask (250g)</li>
-        </ul>
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" alt="Starter Brew Set Siphon">
       </div>
-      <button class="btn" onclick="selectTier('Starter Brew Set', 190)">Select Bundle</button>
+      <div class="card-body">
+        <div class="tier-header">
+          <div class="tier-title">Starter Brew Set</div>
+          <div class="tier-price-row">
+            <span class="tier-price">$190</span>
+            <span class="tier-cadence">/ complete kit</span>
+          </div>
+          <div class="tier-desc">Essential 3-cup siphon setup for precision heat extraction and daily ritual.</div>
+        </div>
+        <ul class="tier-features">
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>Signature 3-Cup Borosilicate Siphon</span>
+          </li>
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>Precision Alcohol Burner & Wicks</span>
+          </li>
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>Kazumi Signature Single-Origin Roast (250g)</span>
+          </li>
+        </ul>
+        <button class="btn" onclick="selectTier('Starter Brew Set', 190)">Select Starter Kit</button>
+      </div>
     </div>
+
     <div class="tier-card featured">
       <div class="badge">Most Popular</div>
-      <div>
-        <div class="tier-title">Connoisseur Collection</div>
-        <div class="tier-price">$240</div>
-        <div class="tier-desc">Enhanced thermal stability and micro-cloth filtration for full aromatic clarity.</div>
-        <ul class="tier-features">
-          <li>Signature 5-Cup Tabletop Siphon</li>
-          <li>Micro-Cloth Filtration Suite (x5)</li>
-          <li>Dual Curated Single-Origin Roasts</li>
-        </ul>
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Connoisseur Collection Siphon">
       </div>
-      <button class="btn" onclick="selectTier('Connoisseur Collection', 240)">Select Bundle</button>
+      <div class="card-body">
+        <div class="tier-header">
+          <div class="tier-title">Connoisseur Collection</div>
+          <div class="tier-price-row">
+            <span class="tier-price">$240</span>
+            <span class="tier-cadence">/ curated suite</span>
+          </div>
+          <div class="tier-desc">Expanded 5-cup system with reusable micro-cloth filters for full body and clarity.</div>
+        </div>
+        <ul class="tier-features">
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>5-Cup Hand-Crafted Tabletop Siphon</span>
+          </li>
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>Micro-Cloth Filter Pack (5-Piece Set)</span>
+          </li>
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>Dual Curated Single-Origin Master Roasts</span>
+          </li>
+        </ul>
+        <button class="btn" onclick="selectTier('Connoisseur Collection', 240)">Select Connoisseur</button>
+      </div>
     </div>
+
     <div class="tier-card">
-      <div>
-        <div class="tier-title">Master Roaster Suite</div>
-        <div class="tier-price">$415</div>
-        <div class="tier-desc">The flagship commercial-grade kit with precision butan burner and brass accents.</div>
-        <ul class="tier-features">
-          <li>Complete Hand-Blown 5-Cup Assembly</li>
-          <li>Precision Micro-Flame Butane Burner</li>
-          <li>Full Quarterly Reserve Subscription Box</li>
-        </ul>
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80" alt="Master Roaster Suite Siphon">
       </div>
-      <button class="btn" onclick="selectTier('Master Roaster Suite', 415)">Select Bundle</button>
+      <div class="card-body">
+        <div class="tier-header">
+          <div class="tier-title">Master Roaster Suite</div>
+          <div class="tier-price-row">
+            <span class="tier-price">$415</span>
+            <span class="tier-cadence">/ flagship tier</span>
+          </div>
+          <div class="tier-desc">The flagship commercial-grade kit with precision micro-torch burner and quarterly reserve beans.</div>
+        </div>
+        <ul class="tier-features">
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>Master 5-Cup Stand with Brass Hardware</span>
+          </li>
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>Precision Micro-Flame Butane Burner</span>
+          </li>
+          <li>
+            <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+            <span>Quarterly Reserve Subscription Allocation</span>
+          </li>
+        </ul>
+        <button class="btn" onclick="selectTier('Master Roaster Suite', 415)">Select Flagship Suite</button>
+      </div>
     </div>
   </main>
+
   <div class="cart-summary" id="cart" style="display:none;">
-    <div>Selected: <span id="cart-item" style="font-weight:600; color:var(--accent);"></span></div>
+    <div class="selected-label">Order Staging</div>
+    <div class="selected-name" id="cart-item"></div>
     <div class="cart-price" id="cart-total"></div>
-    <button class="btn" onclick="alert('Demo: Checkout flow initialized seamlessly.')">Proceed to Mobile Checkout</button>
+    <button class="btn" onclick="alert('Demo: Redirecting to 1-Click Mobile Checkout...')">Proceed to 1-Click Checkout</button>
   </div>
+
   <script>
     function selectTier(name, price) {
       document.getElementById('cart').style.display = 'block';
